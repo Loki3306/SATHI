@@ -35,7 +35,10 @@ export const useAdminData = () => {
         return;
       }
 
-      if (event.key.includes("student_portal") || event.key.includes("admin_portal")) {
+      if (
+        event.key.includes("student_portal") ||
+        event.key.includes("admin_portal")
+      ) {
         refresh();
       }
     };

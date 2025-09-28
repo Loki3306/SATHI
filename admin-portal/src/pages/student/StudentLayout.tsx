@@ -8,8 +8,12 @@ const StudentLayout = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-[#eef3f8] to-[#dde6ef]">
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-6 sm:px-6">
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-primary/60">Smart College ERP</p>
-          <h1 className="mt-2 text-2xl font-semibold text-primary">Student Portal</h1>
+          <p className="text-xs uppercase tracking-[0.35em] text-primary/60">
+            Smart College ERP
+          </p>
+          <h1 className="mt-2 text-2xl font-semibold text-primary">
+            Student Portal
+          </h1>
         </div>
         <button className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-4 py-2 text-sm font-medium text-primary shadow-sm backdrop-blur">
           <Menu className="h-4 w-4" />

@@ -22,7 +22,9 @@ const getStudentSnapshot = (studentId: string): StudentProfileState => {
 };
 
 export const useStudentProfile = (studentId: string) => {
-  const [state, setState] = useState<StudentProfileState>(() => getStudentSnapshot(studentId));
+  const [state, setState] = useState<StudentProfileState>(() =>
+    getStudentSnapshot(studentId),
+  );
 
   const refresh = useCallback(() => {
     setState(getStudentSnapshot(studentId));
@@ -35,7 +37,10 @@ export const useStudentProfile = (studentId: string) => {
         return;
       }
 
-      if (event.key.includes("student_portal") || event.key.includes("admin_portal")) {
+      if (
+        event.key.includes("student_portal") ||
+        event.key.includes("admin_portal")
+      ) {
         refresh();
       }
     };

@@ -28,17 +28,26 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Landing />} />
 
-          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/dashboard" replace />}
+          />
           <Route path="/admin/*" element={<AdminLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="student-management" element={<AdminStudentManagement />} />
+            <Route
+              path="student-management"
+              element={<AdminStudentManagement />}
+            />
             <Route path="fee-management" element={<AdminFeeManagement />} />
             <Route path="verification-center" element={<AdminVerification />} />
             <Route path="reports" element={<AdminReports />} />
           </Route>
 
-          <Route path="/student" element={<Navigate to="/student/dashboard" replace />} />
+          <Route
+            path="/student"
+            element={<Navigate to="/student/dashboard" replace />}
+          />
           <Route path="/student/*" element={<StudentLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<StudentDashboard />} />

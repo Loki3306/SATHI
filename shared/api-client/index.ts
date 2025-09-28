@@ -35,13 +35,20 @@ const writeJson = <T>(key: string, value: T) => {
 
 export const storageClient = {
   getStudents: () => readJson<Student[]>(STORAGE_KEYS.students, []),
-  setStudents: (students: Student[]) => writeJson(STORAGE_KEYS.students, students),
+  setStudents: (students: Student[]) =>
+    writeJson(STORAGE_KEYS.students, students),
   getPayments: () => readJson<Payment[]>(STORAGE_KEYS.payments, []),
-  setPayments: (payments: Payment[]) => writeJson(STORAGE_KEYS.payments, payments),
-  getDocuments: () => readJson<DocumentVerification[]>(STORAGE_KEYS.documents, []),
-  setDocuments: (documents: DocumentVerification[]) => writeJson(STORAGE_KEYS.documents, documents),
+  setPayments: (payments: Payment[]) =>
+    writeJson(STORAGE_KEYS.payments, payments),
+  getDocuments: () =>
+    readJson<DocumentVerification[]>(STORAGE_KEYS.documents, []),
+  setDocuments: (documents: DocumentVerification[]) =>
+    writeJson(STORAGE_KEYS.documents, documents),
   getHostels: () => readJson<HostelSummary[]>(STORAGE_KEYS.hostels, []),
-  setHostels: (hostels: HostelSummary[]) => writeJson(STORAGE_KEYS.hostels, hostels),
-  getAnalyticsSnapshot: () => readJson<AnalyticsSnapshot | null>(STORAGE_KEYS.analytics, null),
-  setAnalyticsSnapshot: (snapshot: AnalyticsSnapshot) => writeJson(STORAGE_KEYS.analytics, snapshot),
+  setHostels: (hostels: HostelSummary[]) =>
+    writeJson(STORAGE_KEYS.hostels, hostels),
+  getAnalyticsSnapshot: () =>
+    readJson<AnalyticsSnapshot | null>(STORAGE_KEYS.analytics, null),
+  setAnalyticsSnapshot: (snapshot: AnalyticsSnapshot) =>
+    writeJson(STORAGE_KEYS.analytics, snapshot),
 };

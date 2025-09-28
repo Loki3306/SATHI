@@ -26,7 +26,10 @@ const DEFAULT_STUDENTS: Student[] = [
     },
     documents: {
       photo: "/assets/students/aarav-photo.jpg",
-      certificates: ["/assets/students/aarav-hs.pdf", "/assets/students/aarav-jee.pdf"],
+      certificates: [
+        "/assets/students/aarav-hs.pdf",
+        "/assets/students/aarav-jee.pdf",
+      ],
       identityProof: "/assets/students/aarav-id.pdf",
     },
     hostel: {
@@ -291,15 +294,15 @@ const DEFAULT_HOSTELS: HostelSummary[] = [
 
 const DEFAULT_ANALYTICS: AnalyticsSnapshot = {
   totalStudents: DEFAULT_STUDENTS.length,
-  pendingApplications: DEFAULT_STUDENTS.filter((student) => student.status === "pending").length,
-  totalFeesCollected: DEFAULT_PAYMENTS.filter((payment) => payment.status === "completed").reduce(
-    (total, payment) => total + payment.amount,
-    0,
-  ),
-  outstandingFees: DEFAULT_PAYMENTS.filter((payment) => payment.status !== "completed").reduce(
-    (total, payment) => total + payment.amount,
-    0,
-  ),
+  pendingApplications: DEFAULT_STUDENTS.filter(
+    (student) => student.status === "pending",
+  ).length,
+  totalFeesCollected: DEFAULT_PAYMENTS.filter(
+    (payment) => payment.status === "completed",
+  ).reduce((total, payment) => total + payment.amount, 0),
+  outstandingFees: DEFAULT_PAYMENTS.filter(
+    (payment) => payment.status !== "completed",
+  ).reduce((total, payment) => total + payment.amount, 0),
   registrationTrends: [
     { month: "Sep", value: 84 },
     { month: "Oct", value: 112 },

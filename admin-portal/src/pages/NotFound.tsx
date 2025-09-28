@@ -15,9 +15,12 @@ const NotFound = () => {
         <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
           <SearchX className="h-7 w-7" />
         </span>
-        <h1 className="mt-6 text-3xl font-semibold text-primary">We could not find that screen</h1>
+        <h1 className="mt-6 text-3xl font-semibold text-primary">
+          We could not find that screen
+        </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          The requested resource is not available. Navigate back to the portal overview or choose a section from the navigation menu.
+          The requested resource is not available. Navigate back to the portal
+          overview or choose a section from the navigation menu.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
