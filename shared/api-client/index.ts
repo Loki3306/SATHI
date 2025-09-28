@@ -1,4 +1,10 @@
-import type { Student, Payment, DocumentVerification } from "@shared/types";
+import type {
+  Student,
+  Payment,
+  DocumentVerification,
+  AnalyticsSnapshot,
+  HostelSummary,
+} from "@shared/types";
 import { STORAGE_KEYS } from "@shared/constants";
 
 const readJson = <T>(key: string, fallback: T): T => {
@@ -34,4 +40,8 @@ export const storageClient = {
   setPayments: (payments: Payment[]) => writeJson(STORAGE_KEYS.payments, payments),
   getDocuments: () => readJson<DocumentVerification[]>(STORAGE_KEYS.documents, []),
   setDocuments: (documents: DocumentVerification[]) => writeJson(STORAGE_KEYS.documents, documents),
+  getHostels: () => readJson<HostelSummary[]>(STORAGE_KEYS.hostels, []),
+  setHostels: (hostels: HostelSummary[]) => writeJson(STORAGE_KEYS.hostels, hostels),
+  getAnalyticsSnapshot: () => readJson<AnalyticsSnapshot | null>(STORAGE_KEYS.analytics, null),
+  setAnalyticsSnapshot: (snapshot: AnalyticsSnapshot) => writeJson(STORAGE_KEYS.analytics, snapshot),
 };
