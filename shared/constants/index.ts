@@ -21,3 +21,5 @@ export const STUDENT_NAVIGATION = [
   { label: "Documents", path: "/student/documents" },
   { label: "Support", path: "/student/support" },
 ] as const;
+
+export const DEFAULT_STUDENT_ID = "STU-2025-001";
