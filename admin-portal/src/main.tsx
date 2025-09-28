@@ -1,6 +1,9 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./styles/global.css";
+import { bootstrapDataLayer } from "./utils/dataBootstrap";
+
+bootstrapDataLayer();
 
 const rootElement = document.getElementById("root");
 
