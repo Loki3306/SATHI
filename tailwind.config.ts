@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+import type { Config } from "tailwindcss";
+
 export default {
   darkMode: ["class"],
   content: ["./admin-portal/src/**/*.{ts,tsx}", "./student-portal/src/**/*.{ts,tsx}", "./shared/**/*.{ts,tsx}"],
