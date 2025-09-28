@@ -9,8 +9,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: ["./client", "./shared"],
-      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
+      allow: ["./admin-portal", "./shared"],
+      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "backend/**"],
     },
   },
   build: {
@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), expressPlugin()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./client"),
+      "@": path.resolve(__dirname, "./admin-portal/src"),
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
