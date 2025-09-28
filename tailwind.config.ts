@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/**/*.{ts,tsx}"],
+  content: ["./admin-portal/src/**/*.{ts,tsx}", "./student-portal/src/**/*.{ts,tsx}", "./shared/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -38,6 +38,10 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        accentSoft: {
+          DEFAULT: "hsl(var(--accent-soft))",
+          foreground: "hsl(var(--accent-soft-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
