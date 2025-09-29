@@ -43,6 +43,7 @@ const StudentPayFees = () => {
 
     storageClient.setPayments([payment, ...allPayments]);
     setStatus("success");
+    refresh();
     window.dispatchEvent(new StorageEvent("storage", { key: "student_portal:payments" }));
   };
 
