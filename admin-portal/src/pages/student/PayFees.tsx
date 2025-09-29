@@ -44,17 +44,24 @@ const StudentPayFees = () => {
     storageClient.setPayments([payment, ...allPayments]);
     setStatus("success");
     refresh();
-    window.dispatchEvent(new StorageEvent("storage", { key: "student_portal:payments" }));
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: "student_portal:payments" }),
+    );
   };
 
   return (
     <div className="space-y-6">
       <section className="rounded-3xl border border-border bg-white/90 p-6 shadow-xl">
         <header className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Secure payments</p>
-          <h2 className="text-2xl font-semibold text-primary">Fee payment hub</h2>
+          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+            Secure payments
+          </p>
+          <h2 className="text-2xl font-semibold text-primary">
+            Fee payment hub
+          </h2>
           <p className="text-sm text-muted-foreground">
-            Pay tuition, hostel, exam and library dues with instant GST-ready receipts.
+            Pay tuition, hostel, exam and library dues with instant GST-ready
+            receipts.
           </p>
         </header>
         <form className="mt-6 space-y-4" onSubmit={onSubmit}>
@@ -116,8 +123,12 @@ const StudentPayFees = () => {
       <section className="rounded-3xl border border-border bg-white/90 p-6 shadow-xl">
         <header className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-primary">Payment history</h3>
-            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">auto-synced with admin portal</p>
+            <h3 className="text-lg font-semibold text-primary">
+              Payment history
+            </h3>
+            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+              auto-synced with admin portal
+            </p>
           </div>
           <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
             Total paid {formatCurrency(collectedTotal)}
@@ -125,12 +136,18 @@ const StudentPayFees = () => {
         </header>
         <div className="mt-4 divide-y divide-border/60">
           {payments.map((payment) => (
-            <div key={payment.id} className="flex items-center justify-between gap-3 py-4 text-sm text-muted-foreground">
+            <div
+              key={payment.id}
+              className="flex items-center justify-between gap-3 py-4 text-sm text-muted-foreground"
+            >
               <div>
                 <p className="font-semibold text-primary">
-                  {payment.feeType.toUpperCase()} · {formatCurrency(payment.amount)}
+                  {payment.feeType.toUpperCase()} ·{" "}
+                  {formatCurrency(payment.amount)}
                 </p>
-                <p className="text-xs">{new Date(payment.timestamp).toLocaleString()}</p>
+                <p className="text-xs">
+                  {new Date(payment.timestamp).toLocaleString()}
+                </p>
               </div>
               <span className="rounded-full bg-emerald-100 px-4 py-1 text-xs font-semibold text-emerald-700">
                 {payment.status}
@@ -138,7 +155,9 @@ const StudentPayFees = () => {
             </div>
           ))}
           {payments.length === 0 ? (
-            <p className="py-6 text-center text-sm text-muted-foreground">No payments recorded yet.</p>
+            <p className="py-6 text-center text-sm text-muted-foreground">
+              No payments recorded yet.
+            </p>
           ) : null}
         </div>
       </section>

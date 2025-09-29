@@ -59,21 +59,32 @@ const StudentRegister = () => {
     storageClient.setStudents([newStudent, ...students]);
     setStatus("success");
     setFormState(initialState);
-    window.dispatchEvent(new StorageEvent("storage", { key: "student_portal:students" }));
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: "student_portal:students" }),
+    );
   };
 
   const isSubmissionDisabled = useMemo(
-    () => !formState.name || !formState.email || !formState.phone || !formState.address,
+    () =>
+      !formState.name ||
+      !formState.email ||
+      !formState.phone ||
+      !formState.address,
     [formState],
   );
 
   return (
     <div className="rounded-3xl border border-border bg-white/90 p-6 shadow-xl">
       <header className="space-y-2">
-        <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Enrollment intake</p>
-        <h2 className="text-2xl font-semibold text-primary">New student registration</h2>
+        <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+          Enrollment intake
+        </p>
+        <h2 className="text-2xl font-semibold text-primary">
+          New student registration
+        </h2>
         <p className="text-sm text-muted-foreground">
-          Submit your application for blockchain-backed registration. You can track status on the dashboard.
+          Submit your application for blockchain-backed registration. You can
+          track status on the dashboard.
         </p>
       </header>
       <form className="mt-6 space-y-5" onSubmit={onSubmit}>
@@ -83,7 +94,12 @@ const StudentRegister = () => {
             <input
               required
               value={formState.name}
-              onChange={(event) => setFormState((state) => ({ ...state, name: event.target.value }))}
+              onChange={(event) =>
+                setFormState((state) => ({
+                  ...state,
+                  name: event.target.value,
+                }))
+              }
               className="mt-2 w-full rounded-2xl border border-border/70 bg-white px-4 py-3 text-sm text-primary shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/40"
               placeholder="Enter your name"
             />
@@ -94,7 +110,12 @@ const StudentRegister = () => {
               required
               type="email"
               value={formState.email}
-              onChange={(event) => setFormState((state) => ({ ...state, email: event.target.value }))}
+              onChange={(event) =>
+                setFormState((state) => ({
+                  ...state,
+                  email: event.target.value,
+                }))
+              }
               className="mt-2 w-full rounded-2xl border border-border/70 bg-white px-4 py-3 text-sm text-primary shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/40"
               placeholder="you@college.edu"
             />
@@ -104,7 +125,12 @@ const StudentRegister = () => {
             <input
               required
               value={formState.phone}
-              onChange={(event) => setFormState((state) => ({ ...state, phone: event.target.value }))}
+              onChange={(event) =>
+                setFormState((state) => ({
+                  ...state,
+                  phone: event.target.value,
+                }))
+              }
               className="mt-2 w-full rounded-2xl border border-border/70 bg-white px-4 py-3 text-sm text-primary shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/40"
               placeholder="10-digit mobile"
             />
@@ -113,7 +139,12 @@ const StudentRegister = () => {
             Course
             <select
               value={formState.course}
-              onChange={(event) => setFormState((state) => ({ ...state, course: event.target.value }))}
+              onChange={(event) =>
+                setFormState((state) => ({
+                  ...state,
+                  course: event.target.value,
+                }))
+              }
               className="mt-2 w-full rounded-2xl border border-border/70 bg-white px-4 py-3 text-sm text-primary shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/40"
             >
               {courseOptions.map((course) => (
@@ -128,7 +159,12 @@ const StudentRegister = () => {
             <textarea
               required
               value={formState.address}
-              onChange={(event) => setFormState((state) => ({ ...state, address: event.target.value }))}
+              onChange={(event) =>
+                setFormState((state) => ({
+                  ...state,
+                  address: event.target.value,
+                }))
+              }
               className="mt-2 h-24 w-full rounded-2xl border border-border/70 bg-white px-4 py-3 text-sm text-primary shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/40"
               placeholder="House number, street, city"
             />
@@ -136,7 +172,9 @@ const StudentRegister = () => {
         </div>
         <div className="flex items-center justify-between rounded-2xl bg-muted px-4 py-3 text-xs text-muted-foreground">
           <span>Existing sample student ID for preview:</span>
-          <span className="font-semibold text-primary">{DEFAULT_STUDENT_ID}</span>
+          <span className="font-semibold text-primary">
+            {DEFAULT_STUDENT_ID}
+          </span>
         </div>
         <button
           type="submit"

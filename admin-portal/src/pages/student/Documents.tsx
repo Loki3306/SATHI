@@ -5,10 +5,15 @@ import { DEFAULT_STUDENT_ID } from "@shared/constants";
 import { formatPercent } from "@/utils/formatters";
 import { useStudentProfile } from "@/utils/useStudentProfile";
 
-const documentTypes: DocumentVerification["documentType"][] = ["id", "certificate", "photo"];
+const documentTypes: DocumentVerification["documentType"][] = [
+  "id",
+  "certificate",
+  "photo",
+];
 
 const StudentDocuments = () => {
-  const [documentType, setDocumentType] = useState<DocumentVerification["documentType"]>("id");
+  const [documentType, setDocumentType] =
+    useState<DocumentVerification["documentType"]>("id");
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
@@ -34,17 +39,24 @@ const StudentDocuments = () => {
     setStatus("success");
     setFileName("");
     refresh();
-    window.dispatchEvent(new StorageEvent("storage", { key: "student_portal:documents" }));
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: "student_portal:documents" }),
+    );
   };
 
   return (
     <div className="space-y-6">
       <section className="rounded-3xl border border-border bg-white/90 p-6 shadow-xl">
         <header className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Verification pipeline</p>
-          <h2 className="text-2xl font-semibold text-primary">Document upload center</h2>
+          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+            Verification pipeline
+          </p>
+          <h2 className="text-2xl font-semibold text-primary">
+            Document upload center
+          </h2>
           <p className="text-sm text-muted-foreground">
-            Upload documents for AI verification. Status updates mirror the admin verification center.
+            Upload documents for AI verification. Status updates mirror the
+            admin verification center.
           </p>
         </header>
         <form className="mt-6 space-y-4" onSubmit={onSubmit}>
@@ -57,7 +69,9 @@ const StudentDocuments = () => {
                   type="button"
                   onClick={() => setDocumentType(type)}
                   className={`rounded-2xl px-4 py-2 text-xs font-semibold uppercase tracking-wide transition ${
-                    type === documentType ? "bg-primary text-white" : "bg-muted text-muted-foreground"
+                    type === documentType
+                      ? "bg-primary text-white"
+                      : "bg-muted text-muted-foreground"
                   }`}
                 >
                   {type}
@@ -91,27 +105,44 @@ const StudentDocuments = () => {
 
       <section className="rounded-3xl border border-border bg-white/90 p-6 shadow-xl">
         <header className="mb-4">
-          <h3 className="text-lg font-semibold text-primary">Verification history</h3>
-          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">mirrors admin portal records</p>
+          <h3 className="text-lg font-semibold text-primary">
+            Verification history
+          </h3>
+          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+            mirrors admin portal records
+          </p>
         </header>
         <div className="space-y-3">
           {documents.map((document) => (
-            <article key={document.id} className="rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm text-muted-foreground">
+            <article
+              key={document.id}
+              className="rounded-2xl border border-border/70 bg-white/80 px-4 py-3 text-sm text-muted-foreground"
+            >
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-primary">{document.documentType.toUpperCase()}</span>
-                <span className="text-xs">{new Date(document.timestamp).toLocaleString()}</span>
+                <span className="font-semibold text-primary">
+                  {document.documentType.toUpperCase()}
+                </span>
+                <span className="text-xs">
+                  {new Date(document.timestamp).toLocaleString()}
+                </span>
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">{document.extractedText}</p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {document.extractedText}
+              </p>
               <div className="mt-3 flex items-center justify-between">
                 <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
                   {document.verificationStatus}
                 </span>
-                <span className="font-semibold text-accent">{formatPercent(document.confidence)}</span>
+                <span className="font-semibold text-accent">
+                  {formatPercent(document.confidence)}
+                </span>
               </div>
             </article>
           ))}
           {documents.length === 0 ? (
-            <p className="py-4 text-center text-sm text-muted-foreground">No documents submitted yet.</p>
+            <p className="py-4 text-center text-sm text-muted-foreground">
+              No documents submitted yet.
+            </p>
           ) : null}
         </div>
       </section>
