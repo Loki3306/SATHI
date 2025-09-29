@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: ["./admin-portal", "./shared"],
+      allow: ["./admin-portal", "./shared","./"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "backend/**"],
     },
   },
