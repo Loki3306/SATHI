@@ -3,6 +3,7 @@ import { storageClient } from "@shared/api-client";
 import type { DocumentVerification } from "@shared/types";
 import { DEFAULT_STUDENT_ID } from "@shared/constants";
 import { formatPercent } from "@/utils/formatters";
+import { useStudentProfile } from "@/utils/useStudentProfile";
 
 const documentTypes: DocumentVerification["documentType"][] = ["id", "certificate", "photo"];
 
@@ -11,7 +12,7 @@ const StudentDocuments = () => {
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
-  const documents = storageClient.getDocuments().filter((document) => document.studentId === DEFAULT_STUDENT_ID);
+  const { documents, refresh } = useStudentProfile(DEFAULT_STUDENT_ID);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,6 +33,7 @@ const StudentDocuments = () => {
     storageClient.setDocuments([document, ...allDocuments]);
     setStatus("success");
     setFileName("");
+    refresh();
     window.dispatchEvent(new StorageEvent("storage", { key: "student_portal:documents" }));
   };
 
