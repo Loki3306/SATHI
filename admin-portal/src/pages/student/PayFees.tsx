@@ -2,6 +2,7 @@ import { FormEvent, useMemo, useState } from "react";
 import { storageClient } from "@shared/api-client";
 import type { Payment } from "@shared/types";
 import { formatCurrency } from "@/utils/formatters";
+import { useStudentProfile } from "@/utils/useStudentProfile";
 import { DEFAULT_STUDENT_ID } from "@shared/constants";
 
 const feeTypes: Payment["feeType"][] = ["tuition", "hostel", "exam", "library"];
@@ -13,7 +14,7 @@ const StudentPayFees = () => {
   const [method, setMethod] = useState(paymentMethods[0]);
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
-  const payments = storageClient.getPayments().filter((payment) => payment.studentId === DEFAULT_STUDENT_ID);
+  const { payments, refresh } = useStudentProfile(DEFAULT_STUDENT_ID);
 
   const collectedTotal = useMemo(
     () =>
